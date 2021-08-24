@@ -38,12 +38,13 @@ public class WordPool {
         }
         while(line != null){
             try {
+                pool.get(type).add(line);
                 line = reader.readLine();
             } catch (IOException exception) {
                 exception.printStackTrace();
                 break;
             }
-            pool.get(type).add(line);
+
         }
     }
 
@@ -72,5 +73,19 @@ public class WordPool {
 
     public String getWord(TokenType type) {
         return pool.get(type).get((int) (Math.random()* pool.get(type).size()));
+    }
+
+    public String toString(){
+        StringBuilder builder = new StringBuilder();
+
+        for(var entry : pool.entrySet()){
+            builder.append(entry.getKey().toString()+":\n");
+
+            for(var val : entry.getValue()){
+                builder.append(val+",");
+            }
+            builder.append("\n");
+        }
+        return builder.toString();
     }
 }

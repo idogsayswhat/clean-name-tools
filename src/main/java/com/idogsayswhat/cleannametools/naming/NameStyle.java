@@ -18,7 +18,10 @@ public enum NameStyle {
 
     static {
         for (NameStyle e: values()) {
-            BY_L.add(e);
+            if(e != null){
+                BY_L.add(e);
+            }
+
         }
     }
 
