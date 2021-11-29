@@ -36,7 +36,9 @@ public class UsageTests {
             System.out.println(type);
 
             for(int i = 0; i < 100000; i++){
-                Assertions.assertTrue(CleanNameTools.wordPool.getWord(type) != null,"The word pool must NOT generate null.");
+                String word = CleanNameTools.wordPool.getWord(type);
+                Assertions.assertTrue(word != null,"The word pool must NOT generate null.");
+                Assertions.assertTrue(!word.equals("null"),"The word pool must NOT generate null.");
             }
 
         }
